@@ -70,29 +70,37 @@
      PAGE 1 — COVER
   ══════════════════════════════ */
   .cover-hero {
-    position: relative; width: 100%; height: 178mm; overflow: hidden;
+    position: relative; width: 100%; height: 190mm; overflow: hidden;
   }
-  .cover-hero img {
+  .cover-hero > img {
     width: 100%; height: 100%; object-fit: cover; display: block;
   }
   .cover-overlay {
     position: absolute; inset: 0;
     background: linear-gradient(155deg,
       rgba(13,92,69,.90) 0%,
-      rgba(10,60,45,.78) 55%,
-      rgba(200,147,10,.22) 100%);
+      rgba(10,60,45,.80) 55%,
+      rgba(200,147,10,.20) 100%);
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
-  .cover-content {
+  .cover-inner {
     position: absolute; inset: 0;
-    display: flex; flex-direction: column; justify-content: flex-end;
-    padding: 10mm 14mm 9mm;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    padding: 10mm 14mm 10mm;
+  }
+  .cover-top {
+    display: flex; align-items: center; justify-content: space-between;
   }
   .cover-logo {
-    position: absolute; top: 10mm; left: 14mm;
-    height: 12mm; width: auto;
-    filter: brightness(0) invert(1); opacity: .9;
+    height: 13mm; width: auto; object-fit: contain;
+    filter: brightness(0) invert(1); opacity: .92;
   }
+  .cover-year {
+    font-size: 7.5pt; font-weight: 700; letter-spacing: .1em;
+    color: rgba(255,255,255,.65); text-transform: uppercase;
+  }
+  .cover-bottom { display: flex; flex-direction: column; }
   .cover-eyebrow {
     font-size: 7.5pt; font-weight: 700; letter-spacing: .18em;
     text-transform: uppercase; color: var(--gold);
@@ -100,7 +108,7 @@
   }
   .cover-title {
     font-family: 'Playfair Display', Georgia, serif;
-    font-size: 29pt; font-weight: 800; line-height: 1.1;
+    font-size: 30pt; font-weight: 800; line-height: 1.1;
     color: var(--white); margin-bottom: 3.5mm;
   }
   .cover-title span { color: #9EDFC8; }
@@ -108,35 +116,59 @@
     font-size: 9.5pt; color: rgba(255,255,255,.72); font-weight: 400;
   }
 
-  /* Stat strip */
+  /* Stat strip — fixed 57mm */
   .stat-strip {
     background: var(--white);
-    height: calc(297mm - 178mm);
+    height: 57mm;
     display: flex; align-items: stretch;
+    border-bottom: 0.3mm solid var(--border);
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
   .stat-item {
     flex: 1; display: flex; flex-direction: column;
     justify-content: center; align-items: center; text-align: center;
-    padding: 5mm 3mm;
+    padding: 4mm 3mm;
     border-right: 0.3mm solid var(--border);
   }
   .stat-item:last-child { border-right: none; }
   .stat-icon {
-    width: 9mm; height: 9mm; border-radius: 2mm;
+    width: 10mm; height: 10mm; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    margin-bottom: 2.5mm; flex-shrink: 0;
+    margin-bottom: 2mm; flex-shrink: 0;
   }
   .si-teal  { background: var(--teal-light); }
   .si-gold  { background: var(--gold-light); }
   .si-green { background: var(--green-light); }
   .si-brown { background: var(--brown-light); }
-  .stat-label {
-    font-size: 6pt; font-weight: 700; letter-spacing: .1em;
-    text-transform: uppercase; color: var(--teal-mid); margin-bottom: 1mm;
+  .stat-num  {
+    font-size: 16pt; font-weight: 900; color: var(--teal); line-height: 1;
+    margin-bottom: 1mm;
   }
-  .stat-val  { font-size: 9pt; font-weight: 800; color: var(--dark); line-height: 1.25; }
-  .stat-note { font-size: 6.5pt; color: var(--gray); margin-top: .7mm; }
+  .stat-label {
+    font-size: 7pt; font-weight: 500; color: var(--gray);
+    line-height: 1.3; max-width: 28mm;
+  }
+
+  /* Bottom accent band — fills remaining 50mm (297 - 190 - 57 = 50) */
+  .cover-band {
+    height: 50mm; background: var(--teal);
+    display: flex; align-items: center;
+    padding: 0 14mm; gap: 8mm;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .cover-band__icon {
+    width: 14mm; height: 14mm; border-radius: 2mm; flex-shrink: 0;
+    background: rgba(255,255,255,.12);
+    display: flex; align-items: center; justify-content: center;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .cover-band__text strong {
+    display: block; font-size: 9pt; font-weight: 800; color: var(--white);
+    margin-bottom: 2mm;
+  }
+  .cover-band__text p {
+    font-size: 8pt; color: rgba(255,255,255,.72); line-height: 1.6;
+  }
 
   /* ══════════════════════════════
      PAGE 2 — CONTENT
@@ -320,46 +352,57 @@
   <div class="cover-hero">
     <img src="images/foto-3.jpeg" alt="Restauración ecológica en Pacho" />
     <div class="cover-overlay"></div>
-    <div class="cover-content">
-      <img src="logo-sembrando-vida-vector.png" alt="Logo Sembrando Vida" class="cover-logo" />
-      <div class="cover-eyebrow">Fundación Sembrando Vida por Colombia</div>
-      <h1 class="cover-title">Proyecto Técnico<br><span>Ambiental Integral</span></h1>
-      <p class="cover-sub">Pacho, Cundinamarca · Director: Alexander Useche Cáceres</p>
+    <div class="cover-inner">
+      <div class="cover-top">
+        <img src="logo-sembrando-vida-vector.png" alt="Logo Sembrando Vida" class="cover-logo" />
+        <span class="cover-year">Pacho · 2026</span>
+      </div>
+      <div class="cover-bottom">
+        <div class="cover-eyebrow">Fundación Sembrando Vida por Colombia</div>
+        <h1 class="cover-title">Proyecto Técnico<br><span>Ambiental Integral</span></h1>
+        <p class="cover-sub">Director: Alexander Useche Cáceres · Pacho, Cundinamarca</p>
+      </div>
     </div>
   </div>
 
   <div class="stat-strip">
     <div class="stat-item">
       <div class="stat-icon si-teal">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0D5C45" stroke-width="2.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#0D5C45" stroke-width="2.5" stroke-linecap="round"><path d="M12 22V12"/><path d="M12 12C12 8 16 4 20 4c0 4-2 8-8 8z"/><path d="M12 12C12 8 8 4 4 4c0 4 2 8 8 8z"/></svg>
       </div>
-      <div class="stat-label">Marco Legal</div>
-      <div class="stat-val">Ley 99 / 1993</div>
-      <div class="stat-note">SINA – Autoridad Ambiental</div>
+      <div class="stat-num">2.000</div>
+      <div class="stat-label">Árboles nativos sembrados</div>
     </div>
     <div class="stat-item">
       <div class="stat-icon si-gold">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8930A" stroke-width="2.5" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C8930A" stroke-width="2.5" stroke-linecap="round"><path d="M12 2C6 10 4 14 4 16a8 8 0 0016 0c0-2-2-6-8-14z"/></svg>
       </div>
-      <div class="stat-label">Normativa</div>
-      <div class="stat-val">Decreto 1076</div>
-      <div class="stat-note">Sector Ambiente / 2015</div>
+      <div class="stat-num">8 km</div>
+      <div class="stat-label">Zonas hídricas y viales intervenidas</div>
     </div>
     <div class="stat-item">
       <div class="stat-icon si-green">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       </div>
-      <div class="stat-label">Duración</div>
-      <div class="stat-val">24 Meses</div>
-      <div class="stat-note">Ejecución continua</div>
+      <div class="stat-num">24</div>
+      <div class="stat-label">Meses de ejecución continua</div>
     </div>
     <div class="stat-item">
       <div class="stat-icon si-brown">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A3B1E" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#7A3B1E" stroke-width="2.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
       </div>
-      <div class="stat-label">Municipio</div>
-      <div class="stat-val">Pacho</div>
-      <div class="stat-note">Cundinamarca · CAR</div>
+      <div class="stat-num">3</div>
+      <div class="stat-label">Zonas georreferenciadas de intervención</div>
+    </div>
+  </div>
+
+  <div class="cover-band">
+    <div class="cover-band__icon">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+    </div>
+    <div class="cover-band__text">
+      <strong>Marco normativo: Ley 99/1993 · Decreto 1076/2015</strong>
+      <p>Proyecto alineado con la autoridad de la Corporación Autónoma Regional (CAR) para la restauración de servidumbres hídricas, recuperación de corredores viales rurales y economía circular mediante compostaje comunitario en el municipio de Pacho, Cundinamarca.</p>
     </div>
   </div>
 
