@@ -41,9 +41,9 @@ jobs:
           protocol: ftps
           port: 21
 
-          # Carpeta raíz en Namecheap shared hosting
-          # Cámbiala si el sitio va en un subdirectorio, p.ej.: /public_html/nueva-carpeta/
-          server-dir: /public_html/
+          # En Namecheap el FTP ya apunta DENTRO de public_html,
+          # así que la raíz del sitio es simplemente /
+          server-dir: /
 
           # Solo sube los archivos que cambiaron (más rápido a partir del 2.º deploy)
           dangerous-clean-slate: false
