@@ -246,50 +246,58 @@
   .vc strong { color: #A8D5A8; font-size: 7pt; display: block; margin-bottom: 1mm; }
 
   /* ════════════════════════════════════════
-     SLIDE 5 — LÍNEAS DE ACCIÓN (5 pillars)
+     SLIDE 5 — LÍNEAS DE ACCIÓN (rows layout)
   ════════════════════════════════════════ */
-  .lineas-header {
-    background: var(--green); height: 16mm;
-    display: flex; align-items: center; padding: 0 10mm; gap: 4mm;
+  .lineas-wrap { display: flex; height: 100%; }
+
+  .lineas-side {
+    width: 68mm; background: var(--green);
+    display: flex; flex-direction: column; justify-content: space-between;
+    padding: 9mm 8mm 8mm;
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
-  .lineas-header img { height: 8mm; filter: brightness(0) invert(1); opacity: .85; }
-  .lineas-header-text strong {
-    display: block; font-size: 10pt; font-weight: 800; color: var(--white);
+  .lineas-slide-label {
+    font-size: 6pt; font-weight: 800; letter-spacing: .18em;
+    text-transform: uppercase; color: rgba(255,255,255,.45); margin-bottom: 2mm;
   }
-  .lineas-header-text small { font-size: 7pt; color: rgba(255,255,255,.6); }
-  .lineas-body {
-    height: calc(143mm - 16mm);
-    display: flex; padding: 5mm 10mm 4mm; gap: 3.5mm; align-items: stretch;
+  .lineas-side-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 20pt; font-weight: 800; line-height: 1.15; color: var(--white);
+    margin-bottom: 3mm;
   }
-  .pillar {
-    flex: 1; border-radius: 2.5mm; padding: 4.5mm 4mm;
-    display: flex; flex-direction: column;
+  .lineas-side-sub { font-size: 8pt; color: rgba(255,255,255,.65); line-height: 1.55; }
+  .lineas-side-logo {
+    height: 9mm; width: auto; filter: brightness(0) invert(1); opacity: .55;
+  }
+
+  .lineas-rows {
+    flex: 1; display: flex; flex-direction: column;
+  }
+  .lrow {
+    flex: 1; display: flex; align-items: center;
+    padding: 0 8mm; gap: 5mm;
+    border-bottom: 0.3mm solid var(--border);
     -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
-  .p1 { background: var(--green); }
-  .p2 { background: var(--green-pale); border: 0.3mm solid #C8E6C9; }
-  .p3 { background: var(--gold-light); border: 0.3mm solid #FFE082; }
-  .p4 { background: var(--brown-light); border: 0.3mm solid #FFCCBC; }
-  .p5 { background: var(--blue-light); border: 0.3mm solid #BBCFEE; }
-  .pillar-num {
-    font-size: 22pt; font-weight: 900; line-height: 1; margin-bottom: 2mm;
+  .lrow:last-child { border-bottom: none; }
+  .lrow:nth-child(even) { background: #FAFAFA; }
+  .lrow-num {
+    width: 8mm; height: 8mm; border-radius: 50%; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 8pt; font-weight: 900;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
   }
-  .p1 .pillar-num { color: rgba(255,255,255,.25); }
-  .p2 .pillar-num { color: rgba(27,94,27,.2); }
-  .p3 .pillar-num { color: rgba(200,147,10,.25); }
-  .p4 .pillar-num { color: rgba(122,59,30,.2); }
-  .p5 .pillar-num { color: rgba(27,79,158,.2); }
-  .pillar-icon { margin-bottom: 2mm; }
-  .pillar h3 { font-size: 8pt; font-weight: 800; line-height: 1.3; margin-bottom: 1.5mm; }
-  .p1 h3 { color: var(--white); }
-  .p2 h3 { color: var(--green); }
-  .p3 h3 { color: #7B5500; }
-  .p4 h3 { color: var(--brown); }
-  .p5 h3 { color: var(--blue); }
-  .pillar p { font-size: 7.3pt; line-height: 1.4; }
-  .p1 p { color: rgba(255,255,255,.75); }
-  .p2 p, .p3 p, .p4 p, .p5 p { color: var(--gray); }
+  .ln1 { background: var(--green-light); color: var(--green); }
+  .ln2 { background: var(--green-light); color: var(--green); }
+  .ln3 { background: var(--gold-light);  color: #7B5500; }
+  .ln4 { background: var(--brown-light); color: var(--brown); }
+  .ln5 { background: var(--blue-light);  color: var(--blue); }
+  .lrow-icon { flex-shrink: 0; }
+  .lrow-text strong {
+    font-size: 9pt; font-weight: 800; color: var(--dark);
+    display: block; margin-bottom: .8mm;
+  }
+  .lrow-text span { font-size: 7.8pt; color: var(--gray); line-height: 1.4; }
 
   /* ════════════════════════════════════════
      SHARED — SPLIT PHOTO layout
@@ -537,54 +545,60 @@
 
 <!-- ══ SLIDE 5 — LÍNEAS DE ACCIÓN ══ -->
 <div class="slide">
-  <div class="lineas-header">
-    <img src="logo-sembrando-vida-vector.png" alt="Logo" />
-    <div class="lineas-header-text">
-      <strong>Líneas de Acción</strong>
-      <small>5 pilares estratégicos · Fundación Sembrando Vida por Colombia</small>
-    </div>
-  </div>
-  <div class="lineas-body">
-    <div class="pillar p1">
-      <div class="pillar-num">01</div>
-      <div class="pillar-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.8)" stroke-width="2.5" stroke-linecap="round"><path d="M12 22V12"/><path d="M12 12C12 8 16 4 20 4c0 4-2 8-8 8z"/><path d="M12 12C12 8 8 4 4 4c0 4 2 8 8 8z"/></svg>
+  <div class="lineas-wrap">
+
+    <div class="lineas-side">
+      <div class="lineas-side-top">
+        <div class="lineas-slide-label">05 — Estrategia</div>
+        <h2 class="lineas-side-title">Líneas<br>de Acción</h2>
+        <p class="lineas-side-sub">5 pilares estratégicos que guían toda la gestión ambiental de la Fundación Sembrando Vida por Colombia.</p>
       </div>
-      <h3>Reforestación de fuentes hídricas</h3>
-      <p>Siembra de especies nativas en rondas y nacimientos de agua.</p>
+      <img src="logo-sembrando-vida-vector.png" alt="Logo" class="lineas-side-logo" />
     </div>
-    <div class="pillar p2">
-      <div class="pillar-num">02</div>
-      <div class="pillar-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1B5E1B" stroke-width="2.5" stroke-linecap="round"><path d="M3 17l3-10h12l3 10"/><path d="M9 17l1.5-5M15 17l-1.5-5"/></svg>
+
+    <div class="lineas-rows">
+      <div class="lrow">
+        <div class="lrow-num ln1">01</div>
+        <div class="lrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1B5E1B" stroke-width="2.5" stroke-linecap="round"><path d="M12 22V12"/><path d="M12 12C12 8 16 4 20 4c0 4-2 8-8 8z"/><path d="M12 12C12 8 8 4 4 4c0 4 2 8 8 8z"/></svg></div>
+        <div class="lrow-text">
+          <strong>Reforestación de fuentes hídricas</strong>
+          <span>Siembra de especies nativas en rondas y nacimientos de agua para recuperar ecosistemas hídricos.</span>
+        </div>
       </div>
-      <h3>Restauración en servidumbres viales</h3>
-      <p>Arborización y barreras vivas en vías primarias, secundarias y terciarias.</p>
-    </div>
-    <div class="pillar p3">
-      <div class="pillar-num">03</div>
-      <div class="pillar-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8930A" stroke-width="2.5" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+      <div class="lrow">
+        <div class="lrow-num ln2">02</div>
+        <div class="lrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1B5E1B" stroke-width="2.5" stroke-linecap="round"><path d="M3 17l3-10h12l3 10"/><path d="M9 17l1.5-5M15 17l-1.5-5"/></svg></div>
+        <div class="lrow-text">
+          <strong>Restauración en servidumbres viales</strong>
+          <span>Arborización, barreras vivas y protección de taludes en vías primarias, secundarias y terciarias.</span>
+        </div>
       </div>
-      <h3>Reciclaje y economía circular</h3>
-      <p>Separación en la fuente, centros de acopio rural y programas comunitarios.</p>
-    </div>
-    <div class="pillar p4">
-      <div class="pillar-num">04</div>
-      <div class="pillar-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7A3B1E" stroke-width="2.5" stroke-linecap="round"><path d="M12 2a10 10 0 0110 10c0 5.52-4.48 10-10 10S2 17.52 2 12"/><path d="M12 6v6l4 2"/></svg>
+      <div class="lrow">
+        <div class="lrow-num ln3">03</div>
+        <div class="lrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C8930A" stroke-width="2.5" stroke-linecap="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg></div>
+        <div class="lrow-text">
+          <strong>Reciclaje y economía circular</strong>
+          <span>Separación en la fuente, centros de acopio rural y programas comunitarios de reciclaje.</span>
+        </div>
       </div>
-      <h3>Compostaje y producción de humus</h3>
-      <p>Compostaje comunitario, lombricultura y abono orgánico.</p>
-    </div>
-    <div class="pillar p5">
-      <div class="pillar-num">05</div>
-      <div class="pillar-icon">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1B4F9E" stroke-width="2.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg>
+      <div class="lrow">
+        <div class="lrow-num ln4">04</div>
+        <div class="lrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#7A3B1E" stroke-width="2.5" stroke-linecap="round"><path d="M12 2C6 10 4 14 4 16a8 8 0 0016 0c0-2-2-6-8-14z"/></svg></div>
+        <div class="lrow-text">
+          <strong>Compostaje y producción de humus</strong>
+          <span>Compostaje comunitario, lombricultura y abono orgánico para apoyo a la reforestación.</span>
+        </div>
       </div>
-      <h3>Educación y capacitación ambiental</h3>
-      <p>Talleres rurales, cultura del agua y formación de líderes.</p>
+      <div class="lrow">
+        <div class="lrow-num ln5">05</div>
+        <div class="lrow-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1B4F9E" stroke-width="2.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/></svg></div>
+        <div class="lrow-text">
+          <strong>Educación y capacitación ambiental</strong>
+          <span>Talleres rurales, cultura del agua y formación de líderes ambientales comunitarios.</span>
+        </div>
+      </div>
     </div>
+
   </div>
   <span class="slide-num light">5 / 12</span>
 </div>
