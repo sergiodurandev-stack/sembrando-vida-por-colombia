@@ -1,48 +1,55 @@
-name: Deploy to Hosting (FTP)
+name: Deploy to Namecheap
 
-# Runs automatically on every push to main
 on:
   push:
     branches:
       - main
-
-  # Allow triggering manually from the Actions tab
   workflow_dispatch:
 
 jobs:
   deploy:
-    name: Upload to server via FTP
+    name: Upload to Namecheap via FTPS
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Deploy via FTP
+      - name: Deploy via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          # ── SECRETS ─────────────────────────────────────────────────────────
-          # Add these in: GitHub repo → Settings → Secrets and variables → Actions
+          # ── SECRETS REQUERIDOS ───────────────────────────────────────────────
+          # GitHub repo → Settings → Secrets and variables → Actions → New secret
           #
-          #   FTP_SERVER    →  ftp.tudominio.com  (or IP of your hosting)
-          #   FTP_USERNAME  →  tu_usuario_ftp
-          #   FTP_PASSWORD  →  tu_contraseña_ftp
+          #  FTP_SERVER    → El servidor FTP de Namecheap.
+          #                  Encuéntralo en: cPanel → FTP Accounts → Configure FTP Client
+          #                  Ejemplo: ftp.sembrandovidaporcolombia.org
+          #                           (o la IP de tu servidor)
+          #
+          #  FTP_USERNAME  → ⚠️  En Namecheap el usuario SIEMPRE lleva el dominio:
+          #                  Formato:  usuario@sembrandovidaporcolombia.org
+          #                  (NO solo "usuario", debe incluir @dominio)
+          #                  Lo ves en cPanel → FTP Accounts
+          #
+          #  FTP_PASSWORD  → La contraseña de esa cuenta FTP (no la de cPanel)
           # ────────────────────────────────────────────────────────────────────
-          server: ${{ secrets.FTP_SERVER }}
+          server:   ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
 
-          # Remote directory on your server (adjust if needed)
-          # Common values: /public_html/  or  /www/  or  /httpdocs/
-          server-dir: ${{ secrets.FTP_SERVER_DIR || '/public_html/' }}
+          # Namecheap requiere FTPS (FTP sobre TLS explícito, puerto 21)
+          protocol: ftps
+          port: 21
 
-          # Only upload files that changed (faster deploys after first run)
+          # Carpeta raíz en Namecheap shared hosting
+          # Cámbiala si el sitio va en un subdirectorio, p.ej.: /public_html/nueva-carpeta/
+          server-dir: /public_html/
+
+          # Solo sube los archivos que cambiaron (más rápido a partir del 2.º deploy)
           dangerous-clean-slate: false
 
-          # Show detailed upload log
           log-level: verbose
 
-          # Exclude files that should never go to production
           exclude: |
             **/.git*
             **/.git*/**
