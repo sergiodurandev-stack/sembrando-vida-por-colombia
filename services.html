@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios – Sembrando Vida Por Colombia</title>
+  
+  
+  <link rel="stylesheet" href="fonts/fonts.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="logo-sembrando-vida-vector.png"
+             alt="Logo" class="nav__logo-img"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+        <span class="nav__logo-fallback">
+          <span class="nav__logo-icon">🌱</span>
+          <span class="nav__logo-text">Sembrando Vida<small>Por Colombia</small></span>
+        </span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="about.html">Nosotros</a></li>
+        <li><a href="services.html" class="active">Servicios</a></li>
+        <li><a href="contact.html">Contacto</a></li>
+      </ul>
+      <a href="https://wa.me/573227402313" target="_blank" class="btn btn--nav">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        WhatsApp
+      </a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <a href="index.html">Inicio</a>
+      <a href="about.html">Nosotros</a>
+      <a href="services.html">Servicios</a>
+      <a href="contact.html">Contacto</a>
+      <a href="https://wa.me/573227402313" target="_blank" class="btn btn--green">WhatsApp</a>
+    </div>
+  </nav>
+
+  <!-- PAGE HERO -->
+  <section class="page-hero">
+    <div class="page-hero__bg">
+      <img src="images/foto-1.jpeg" alt="Servicios ambientales" />
+    </div>
+    <div class="page-hero__overlay"></div>
+    <div class="page-hero__content">
+      <span class="label">Lo que hacemos</span>
+      <h1>Nuestros Servicios</h1>
+      <p>Soluciones ambientales integrales para empresas, entes territoriales y propietarios.</p>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="services-intro">
+    <div class="container">
+      <div class="services-intro__inner">
+        <div class="fade-in">
+          <span class="label">Nuestra propuesta</span>
+          <h2 class="section-title">Inicie su proyecto de<br /><em>reforestación</em> hoy</h2>
+          <p>Combinamos reforestación de cuencas y corredores con planificación técnica, asegurando productividad del suelo y cumplimiento legal para inversiones ambientales certificadas.</p>
+        </div>
+        <div class="services-intro__highlights fade-in">
+          <div class="highlight">
+            <span>🌱</span>
+            <div><strong>Planificación estratégica</strong><small>Análisis por hectárea</small></div>
+          </div>
+          <div class="highlight">
+            <span>📋</span>
+            <div><strong>Cumplimiento normativo</strong><small>Inversión forzosa 1%</small></div>
+          </div>
+          <div class="highlight">
+            <span>🔬</span>
+            <div><strong>Rigor técnico</strong><small>Manejo de suelos y cultivos</small></div>
+          </div>
+          <div class="highlight">
+            <span>♻️</span>
+            <div><strong>Gestión de residuos</strong><small>Sistemas de compostaje</small></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS DETALLADOS -->
+  <section class="services-detail">
+    <div class="container">
+
+      <!-- Servicio 1 -->
+      <div class="svc-row fade-in">
+        <div class="svc-row__visual">
+          <img src="images/foto-2.jpeg"
+               alt="Gestión integral de proyectos ambientales"
+               onerror="this.src='images/foto-3.jpeg'" />
+          <span class="svc-row__num">01</span>
+        </div>
+        <div class="svc-row__text">
+          <span class="label">Servicio principal</span>
+          <h2 class="section-title">Gestión Integral de<br /><em>Proyectos Ambientales</em></h2>
+          <p>Combinamos reforestación de cuencas hídricas y corredores viales con planificación técnica integral, asegurando la productividad del suelo y el cumplimiento legal para inversiones ambientales certificadas.</p>
+          <ul class="svc-features">
+            <li><span>✓</span> Reforestación de corredores viales (vías primarias, secundarias, terciarias)</li>
+            <li><span>✓</span> Restauración de cuencas hídricas y zonas de páramo</li>
+            <li><span>✓</span> Planificación estratégica y análisis de rentabilidad por hectárea</li>
+            <li><span>✓</span> Manejo técnico de suelos y selección de especies</li>
+            <li><span>✓</span> Procesos certificados y documentados</li>
+          </ul>
+          <a href="contact.html" class="btn btn--primary">Solicitar este servicio</a>
+        </div>
+      </div>
+
+      <div class="svc-divider"></div>
+
+      <!-- Servicio 2 -->
+      <div class="svc-row svc-row--reverse fade-in">
+        <div class="svc-row__visual">
+          <img src="images/foto-3.jpeg"
+               alt="Asesoría inversión forzosa 1%"
+               onerror="this.src='images/foto-4.jpeg'" />
+          <span class="svc-row__num">02</span>
+        </div>
+        <div class="svc-row__text">
+          <span class="label">Más solicitado</span>
+          <h2 class="section-title">Asesoría en Inversión<br /><em>Forzosa del 1%</em></h2>
+          <p>Orientamos a empresas y entes territoriales en la ejecución eficiente de sus obligaciones ambientales, convirtiendo el requisito legal en una oportunidad de desarrollo sostenible con beneficio real para las comunidades.</p>
+          <ul class="svc-features">
+            <li><span>✓</span> Diagnóstico y estructuración del portafolio de inversión ambiental</li>
+            <li><span>✓</span> Diseño de proyectos elegibles ante autoridades ambientales</li>
+            <li><span>✓</span> Acompañamiento en procesos de aprobación y registro</li>
+            <li><span>✓</span> Ejecución técnica de proyectos de reforestación y restauración</li>
+            <li><span>✓</span> Seguimiento, reportes y certificación ante la autoridad competente</li>
+          </ul>
+          <a href="contact.html" class="btn btn--primary">Solicitar este servicio</a>
+        </div>
+      </div>
+
+      <div class="svc-divider"></div>
+
+      <!-- Servicio 3 -->
+      <div class="svc-row fade-in">
+        <div class="svc-row__visual">
+          <img src="images/foto-4.jpeg"
+               alt="Gestión legal y técnica"
+               onerror="this.src='images/foto-1.jpeg'" />
+          <span class="svc-row__num">03</span>
+        </div>
+        <div class="svc-row__text">
+          <span class="label">Cumplimiento normativo</span>
+          <h2 class="section-title">Gestión <em>Legal y Técnica</em></h2>
+          <p>Brindamos asesoría especializada para que su empresa o entidad territorial cumpla con toda la normativa ambiental vigente, gestionando trámites, permisos y licencias de manera eficiente.</p>
+          <ul class="svc-features">
+            <li><span>✓</span> Asesoría en normativa ambiental colombiana</li>
+            <li><span>✓</span> Gestión de permisos y licencias ambientales</li>
+            <li><span>✓</span> Capacitación en regulaciones vigentes</li>
+            <li><span>✓</span> Preparación de documentos técnicos y legales</li>
+            <li><span>✓</span> Representación ante autoridades ambientales</li>
+          </ul>
+          <a href="contact.html" class="btn btn--primary">Solicitar este servicio</a>
+        </div>
+      </div>
+
+      <div class="svc-divider"></div>
+
+      <!-- Servicio 4 -->
+      <div class="svc-row svc-row--reverse fade-in">
+        <div class="svc-row__visual">
+          <img src="images/foto-1.jpeg"
+               alt="Asesoría técnica y suministro"
+               onerror="this.src='images/foto-2.jpeg'" />
+          <span class="svc-row__num">04</span>
+        </div>
+        <div class="svc-row__text">
+          <span class="label">Operación completa</span>
+          <h2 class="section-title">Asesoría Técnica<br />y <em>Suministro</em></h2>
+          <p>Ofrecemos asesoría técnica integral que incluye el suministro de insumos, plantas y material vegetal certificado, junto con capacitación al equipo humano para la correcta implementación de proyectos ambientales.</p>
+          <ul class="svc-features">
+            <li><span>✓</span> Suministro de plantas y material vegetal certificado</li>
+            <li><span>✓</span> Gestión de residuos sólidos y sistemas de compostaje</li>
+            <li><span>✓</span> Capacitación técnica al personal de campo</li>
+            <li><span>✓</span> Manejo integrado de plagas y enfermedades</li>
+            <li><span>✓</span> Apoyo en comercialización de productos forestales</li>
+          </ul>
+          <a href="contact.html" class="btn btn--primary">Solicitar este servicio</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-banner__inner">
+        <div>
+          <h2>¿No sabe por cuál servicio empezar?</h2>
+          <p>Contáctenos y le orientamos sin costo hacia la solución más adecuada para su proyecto.</p>
+        </div>
+        <a href="contact.html" class="btn btn--primary btn--lg">Hablar con un experto</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img src="logo-sembrando-vida-vector.png"
+               alt="Logo" class="footer__logo" onerror="this.style.display='none'" />
+          <div>
+            <strong>Sembrando Vida Por Colombia</strong>
+            <small>Planificación · Siembra · Vida</small>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4>Páginas</h4>
+          <a href="index.html">Inicio</a>
+          <a href="about.html">Nosotros</a>
+          <a href="services.html">Servicios</a>
+          <a href="contact.html">Contacto</a>
+        </div>
+        <div class="footer__col">
+          <h4>Servicios</h4>
+          <a href="services.html">Gestión integral de proyectos</a>
+          <a href="services.html">Asesoría inversión 1%</a>
+          <a href="services.html">Gestión legal y técnica</a>
+          <a href="services.html">Asesoría y suministro</a>
+        </div>
+        <div class="footer__col">
+          <h4>Contacto</h4>
+          <a href="https://wa.me/573227402313" target="_blank">+57 321 755 1178</a>
+          <span>Colombia</span>
+          <span>Lun – Sáb, 8am – 6pm</span>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Sembrando Vida Por Colombia. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

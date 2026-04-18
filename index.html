@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sembrando Vida Por Colombia</title>
+  
+  
+  <link rel="stylesheet" href="fonts/fonts.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="index.html" class="nav__logo">
+        <img src="logo-sembrando-vida-vector.png"
+             alt="Sembrando Vida Por Colombia"
+             class="nav__logo-img"
+             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'" />
+        <span class="nav__logo-fallback">
+          <span class="nav__logo-icon">🌱</span>
+          <span class="nav__logo-text">Sembrando Vida<small>Por Colombia</small></span>
+        </span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="index.html" class="active">Inicio</a></li>
+        <li><a href="about.html">Nosotros</a></li>
+        <li><a href="services.html">Servicios</a></li>
+        <li><a href="contact.html">Contacto</a></li>
+      </ul>
+      <a href="https://wa.me/573227402313" target="_blank" class="btn btn--nav">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+        WhatsApp
+      </a>
+      <button class="nav__hamburger" id="hamburger" aria-label="Menú">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobileMenu">
+      <a href="index.html">Inicio</a>
+      <a href="about.html">Nosotros</a>
+      <a href="services.html">Servicios</a>
+      <a href="contact.html">Contacto</a>
+      <a href="https://wa.me/573227402313" target="_blank" class="btn btn--green">WhatsApp</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+
+    <!-- LEFT PANEL -->
+    <div class="hero__left">
+      <div class="hero__accent-bar">
+        <span class="accent-bar__brown"></span>
+        <span class="accent-bar__gold"></span>
+        <span class="accent-bar__blue"></span>
+      </div>
+      <div class="hero__badge">Gestión Ambiental Integral</div>
+      <h1 class="hero__title">
+        Reforestación<br />
+        <em>Integral</em> y<br />
+        Consultoría Técnica
+      </h1>
+      <p class="hero__tagline">Planificación · Siembra · Vida</p>
+      <p class="hero__sub">
+        Expertos en corredores viales, cuencas hídricas y zonas de páramo deforestadas.
+        Transformamos el territorio con planificación estratégica y sostenibilidad.
+      </p>
+      <div class="hero__actions">
+        <a href="contact.html" class="btn btn--primary">Solicitar Asesoría</a>
+        <a href="services.html" class="btn btn--outline">Ver Servicios</a>
+      </div>
+      <div class="hero__stats">
+        <div class="stat">
+          <span class="stat__num">457</span>
+          <span class="stat__label">Proyectos<br />ejecutados</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num">16</span>
+          <span class="stat__label">Hectáreas<br />intervenidas</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num">37</span>
+          <span class="stat__label">Proyectos<br />normativos</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL -->
+    <div class="hero__right">
+      <img src="images/foto-1.jpeg"
+           alt="Reforestación en Colombia" />
+      <div class="hero__right-badge">
+        <div class="badge-icon">🌱</div>
+        <div>
+          <strong>Sostenibilidad<br />garantizada</strong>
+          <small>Cada hectárea importa</small>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- NOSOTROS PREVIEW -->
+  <section class="about" id="nosotros">
+    <div class="container">
+      <div class="about__grid">
+        <div class="about__visual">
+          <div class="about__img-wrap">
+            <img src="images/foto-2.jpeg"
+                 alt="Trabajo de campo reforestación"
+                 onerror="this.src='images/foto-3.jpeg'" />
+            <div class="about__badge-float">
+              <span>🌿</span>
+              <p>Sostenibilidad<br />garantizada</p>
+            </div>
+          </div>
+        </div>
+        <div class="about__text">
+          <span class="label">¿Quiénes somos?</span>
+          <h2 class="section-title">Comprometidos con el<br /><em>futuro verde</em> de Colombia</h2>
+          <p>Somos una organización especializada en reforestación técnica y aprovechamiento sostenible de corredores viales, servidumbres y zonas de páramo deforestadas, integrando planificación estratégica y análisis de rentabilidad por hectárea.</p>
+          <p>Brindamos asesoría técnica y legal especializada en planificación, presupuestos, manejo de suelos y normativa ambiental, garantizando la sostenibilidad de cada proyecto.</p>
+          <div class="about__pillars">
+            <div class="pillar">
+              <span class="pillar__icon">🌳</span>
+              <div>
+                <strong>Sostenibilidad</strong>
+                <small>Recuperación de ecosistemas</small>
+              </div>
+            </div>
+            <div class="pillar">
+              <span class="pillar__icon">🔬</span>
+              <div>
+                <strong>Excelencia técnica</strong>
+                <small>Rigor científico en suelos</small>
+              </div>
+            </div>
+            <div class="pillar">
+              <span class="pillar__icon">🤝</span>
+              <div>
+                <strong>Transparencia</strong>
+                <small>Gestión de recursos clara</small>
+              </div>
+            </div>
+            <div class="pillar">
+              <span class="pillar__icon">⚖️</span>
+              <div>
+                <strong>Normativa 1%</strong>
+                <small>Inversión ambiental</small>
+              </div>
+            </div>
+          </div>
+          <a href="about.html" class="btn btn--primary" style="margin-top:8px; align-self:flex-start">Conocer más</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS PREVIEW -->
+  <section class="services" id="servicios">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">Lo que hacemos</span>
+        <h2 class="section-title">Soluciones Ambientales <em>Integrales</em></h2>
+        <p>Acompañamiento completo desde la planificación inicial hasta la producción y comercialización.</p>
+      </div>
+      <div class="services__grid">
+        <div class="service-card fade-in">
+          <div class="service-card__icon">🌱</div>
+          <h3>Gestión Integral de Proyectos</h3>
+          <p>Combinamos reforestación de cuencas y corredores con planificación técnica, asegurando productividad del suelo y cumplimiento legal.</p>
+          <ul>
+            <li>Planificación estratégica por hectárea</li>
+            <li>Análisis de rentabilidad</li>
+            <li>Procesos certificados</li>
+          </ul>
+        </div>
+        <div class="service-card service-card--featured fade-in">
+          <div class="service-card__icon">📊</div>
+          <h3>Asesoría Inversión Forzosa 1%</h3>
+          <p>Orientamos a empresas y entes territoriales en la ejecución eficiente de sus obligaciones ambientales como activos de desarrollo sostenible.</p>
+          <ul>
+            <li>Cumplimiento normativo eficiente</li>
+            <li>Beneficio comunitario</li>
+            <li>Desarrollo sostenible</li>
+          </ul>
+          <span class="service-card__badge">Más solicitado</span>
+        </div>
+        <div class="service-card fade-in">
+          <div class="service-card__icon">⚖️</div>
+          <h3>Gestión Legal y Técnica</h3>
+          <p>Asesoría especializada en normativa ambiental, suministro técnico y capacitación para garantizar el cumplimiento regulatorio de su empresa.</p>
+          <ul>
+            <li>Asesoría técnica y suministro</li>
+            <li>Capacitación en normativa</li>
+            <li>Gestión de trámites</li>
+          </ul>
+        </div>
+      </div>
+      <div style="text-align:center; margin-top:3rem">
+        <a href="services.html" class="btn btn--primary">Ver todos los servicios</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALERÍA -->
+  <section class="gallery">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">Nuestro trabajo</span>
+        <h2 class="section-title">Resultados que <em>transforman</em> el paisaje</h2>
+      </div>
+      <div class="gallery__grid">
+        <div class="gallery__item gallery__item--tall">
+          <img src="images/foto-1.jpeg" alt="Reforestación corredor vial" />
+        </div>
+        <div class="gallery__item">
+          <img src="images/foto-2.jpeg" alt="Trabajo de campo" />
+        </div>
+        <div class="gallery__item">
+          <img src="images/foto-3.jpeg" alt="Cuenca hídrica restaurada" />
+        </div>
+        <div class="gallery__item">
+          <img src="images/foto-4.jpeg" alt="Zona de páramo" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-banner__inner">
+        <div>
+          <h2>¿Listo para transformar su territorio?</h2>
+          <p>Agendemos una consulta técnica sin costo y evaluemos juntos su proyecto de reforestación.</p>
+        </div>
+        <a href="contact.html" class="btn btn--primary btn--lg">Agendar Consulta</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img src="logo-sembrando-vida-vector.png"
+               alt="Logo" class="footer__logo"
+               onerror="this.style.display='none'" />
+          <div>
+            <strong>Sembrando Vida Por Colombia</strong>
+            <small>Planificación · Siembra · Vida</small>
+          </div>
+        </div>
+        <div class="footer__col">
+          <h4>Páginas</h4>
+          <a href="index.html">Inicio</a>
+          <a href="about.html">Nosotros</a>
+          <a href="services.html">Servicios</a>
+          <a href="contact.html">Contacto</a>
+        </div>
+        <div class="footer__col">
+          <h4>Servicios</h4>
+          <a href="services.html">Gestión integral de proyectos</a>
+          <a href="services.html">Asesoría inversión 1%</a>
+          <a href="services.html">Gestión legal y técnica</a>
+          <a href="services.html">Asesoría y suministro</a>
+        </div>
+        <div class="footer__col">
+          <h4>Contacto</h4>
+          <a href="https://wa.me/573227402313" target="_blank">+57 321 755 1178</a>
+          <span>Colombia</span>
+          <span>Lun – Sáb, 8am – 6pm</span>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2026 Sembrando Vida Por Colombia. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
