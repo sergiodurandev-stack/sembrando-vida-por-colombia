@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brochure – Proyecto Técnico Ambiental CAR · Sembrando Vida por Colombia</title>
+  <link rel="stylesheet" href="fonts/fonts.css" />
+  <style>
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green:        #1B5E1B;
+    --green-mid:    #2E7D32;
+    --green-light:  #E8F5E9;
+    --green-pale:   #F1F8F1;
+    --brown:        #7A3B1E;
+    --brown-light:  #FBF0EB;
+    --gold:         #C8930A;
+    --gold-light:   #FFF8E1;
+    --blue:         #1B4F9E;
+    --blue-mid:     #1565C0;
+    --blue-light:   #E3EAF6;
+    --blue-pale:    #EEF3FB;
+    --dark:         #1A1A1A;
+    --gray:         #4A4A4A;
+    --gray-light:   #F5F5F5;
+    --white:        #FFFFFF;
+    --border:       #E0E0E0;
+  }
+
+  html, body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: #B8C4CC;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ── TOOLBAR ── */
+  .toolbar {
+    position: fixed; top: 24px; right: 24px; z-index: 999;
+  }
+  .export-btn {
+    display: flex; align-items: center; gap: 8px;
+    padding: 12px 22px;
+    background: var(--blue-mid); color: #fff;
+    font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700;
+    border: none; border-radius: 50px; cursor: pointer;
+    box-shadow: 0 4px 20px rgba(27,80,158,.35);
+    transition: background .2s;
+  }
+  .export-btn:hover { background: #0d47a1; }
+
+  @media print {
+    .toolbar { display: none !important; }
+    html, body { background: white; }
+    @page { size: A4 portrait; margin: 0; }
+    .page { margin: 0 !important; box-shadow: none !important; page-break-after: always; }
+    .page:last-child { page-break-after: avoid; }
+  }
+
+  /* ── PAGE SHELL ── */
+  .page {
+    width: 210mm; height: 297mm;
+    background: var(--white);
+    margin: 28px auto; position: relative; overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,.18);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+
+  /* ══════════════════════════════
+     PAGE 1 — PORTADA
+  ══════════════════════════════ */
+  .cover-hero {
+    position: relative; width: 100%; height: 175mm; overflow: hidden;
+  }
+  .cover-hero img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: center 40%; display: block;
+  }
+  .cover-hero__overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(
+      150deg,
+      rgba(10,30,80,.90) 0%,
+      rgba(27,79,158,.78) 45%,
+      rgba(11,40,11,.72) 100%
+    );
+  }
+  .cover-hero__inner {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column;
+    justify-content: space-between;
+    padding: 9mm 12mm 9mm;
+  }
+
+  /* Top row */
+  .cover-top {
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 4mm;
+  }
+  .cover-logo {
+    height: 13mm; width: auto; object-fit: contain;
+    filter: brightness(0) invert(1); opacity: .9;
+  }
+  .cover-institution {
+    display: flex; flex-direction: column; align-items: flex-end; gap: 1.5mm;
+  }
+  .inst-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 6.5pt; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+    color: rgba(255,255,255,.85);
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.25);
+    padding: 1.5mm 4mm; border-radius: 50px;
+  }
+  .inst-badge.gold-b { color: var(--gold); border-color: rgba(200,147,10,.4); background: rgba(200,147,10,.1); }
+
+  /* Center */
+  .cover-center {
+    flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 5mm 0;
+  }
+  .cover-pre {
+    display: flex; align-items: center; gap: 5px;
+    font-size: 7pt; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 4mm;
+  }
+  .cover-pre::before {
+    content: ''; display: block; width: 18px; height: 2px;
+    background: var(--gold); border-radius: 2px; flex-shrink: 0;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 27pt; font-weight: 800; color: var(--white); line-height: 1.1;
+    margin-bottom: 5mm;
+  }
+  .cover-title em { font-style: normal; color: #90CAF9; }
+  .cover-desc {
+    font-size: 8.5pt; color: rgba(255,255,255,.72);
+    max-width: 135mm; line-height: 1.65; margin-bottom: 5mm;
+  }
+  .cover-tags { display: flex; gap: 2.5mm; flex-wrap: wrap; }
+  .cover-chip {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-size: 7.5pt; font-weight: 600;
+    color: rgba(255,255,255,.85);
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2);
+    padding: 1.5mm 4mm; border-radius: 50px;
+  }
+
+  /* Director */
+  .cover-director {
+    font-size: 7.5pt; color: rgba(255,255,255,.58); line-height: 1.5;
+  }
+  .cover-director strong {
+    color: rgba(255,255,255,.88); font-size: 8pt; font-weight: 700;
+    display: block; margin-bottom: 1mm;
+  }
+
+  /* Stats strip — 4 indicadores clave */
+  .cover-stats {
+    display: flex; height: 58mm; background: var(--white);
+  }
+  .stat-col {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 5mm 3mm; border-right: 1px solid var(--border); text-align: center;
+  }
+  .stat-col:last-child { border-right: none; }
+  .stat-icon-wrap {
+    width: 11mm; height: 11mm; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 2.5mm; flex-shrink: 0;
+  }
+  .si-blue   { background: var(--blue-light); }
+  .si-green  { background: var(--green-light); }
+  .si-gold   { background: var(--gold-light); }
+  .si-brown  { background: var(--brown-light); }
+  .stat-num  {
+    font-size: 17pt; font-weight: 900; color: var(--blue-mid);
+    line-height: 1; margin-bottom: 1.5mm;
+  }
+  .stat-num.g { color: var(--green); }
+  .stat-num.go { color: var(--gold); }
+  .stat-num.br { color: var(--brown); }
+  .stat-label {
+    font-size: 6.8pt; color: var(--gray); font-weight: 500;
+    line-height: 1.4; max-width: 28mm;
+  }
+
+  /* Color bar */
+  .color-bar { display: flex; height: 3.5mm; width: 100%; }
+  .color-bar span { flex: 1; display: block; }
+  .cb-blue  { background: var(--blue-mid); flex: 2 !important; }
+  .cb-green { background: var(--green); }
+  .cb-gold  { background: var(--gold); }
+  .cb-brown { background: var(--brown); }
+
+  /* ══════════════════════════════
+     PAGE 2 — CONTENIDO
+  ══════════════════════════════ */
+  .p2-header {
+    background: var(--blue-mid); height: 16mm;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 12mm;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .p2-header img {
+    height: 10mm; width: auto;
+    filter: brightness(0) invert(1); opacity: .9;
+  }
+  .p2-header-right { text-align: right; }
+  .p2-header-right strong { display: block; font-size: 8pt; font-weight: 700; color: var(--white); }
+  .p2-header-right small  { font-size: 7pt; color: rgba(255,255,255,.6); }
+
+  /* Body */
+  .p2-body {
+    padding: 6mm 12mm 0;
+    height: calc(297mm - 16mm - 18mm - 3.5mm);
+    display: flex; flex-direction: column; gap: 4mm;
+  }
+
+  /* Two-column row */
+  .two-col { display: flex; gap: 5mm; }
+  .col-l   { flex: 1.08; display: flex; flex-direction: column; gap: 3.5mm; }
+  .col-r   { flex: 0.92; display: flex; flex-direction: column; gap: 3.5mm; }
+
+  /* Section cards */
+  .sec {
+    border-radius: 2mm; border: 0.3mm solid var(--border);
+    padding: 3.5mm 4mm; flex-shrink: 0;
+  }
+  .sec.blue  { background: var(--blue-pale);  border-color: #BBCFEE; }
+  .sec.green { background: var(--green-pale); border-color: #C8E6C9; }
+  .sec.dark  {
+    background: var(--blue-mid);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .sec.white { background: var(--white); }
+
+  .sec-head { display: flex; align-items: center; gap: 2.5mm; margin-bottom: 2mm; }
+  .sec-icon {
+    width: 7mm; height: 7mm; border-radius: 1.5mm;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .si-bg-blue  { background: var(--blue-mid); }
+  .si-bg-green { background: var(--green); }
+  .si-bg-gold  { background: var(--gold); }
+  .si-bg-brown { background: var(--brown); }
+  .si-bg-white { background: rgba(255,255,255,.15); }
+
+  .sec-num {
+    font-size: 6pt; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+    margin-bottom: .6mm;
+  }
+  .sn-blue  { color: var(--blue-mid); }
+  .sn-green { color: var(--green); }
+  .sn-gold  { color: var(--gold); }
+  .sn-brown { color: var(--brown); }
+  .sn-white { color: rgba(255,255,255,.65); }
+
+  .sec h2 { font-size: 9pt; font-weight: 800; color: var(--dark); line-height: 1.2; }
+  .sec.dark h2 { color: var(--white); }
+  .sec p   { font-size: 7.8pt; color: var(--gray); line-height: 1.65; }
+  .sec.dark p { color: rgba(255,255,255,.75); font-size: 7.6pt; }
+
+  /* Bullet lists */
+  .bullet-list { display: flex; flex-direction: column; gap: 2mm; margin-top: .5mm; }
+  .bl-item {
+    display: flex; align-items: flex-start; gap: 2.5mm;
+    font-size: 7.8pt; color: var(--dark); line-height: 1.5;
+  }
+  .bl-dot {
+    width: 4mm; height: 4mm; border-radius: .8mm;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: .3mm;
+  }
+  .bd-blue  { background: var(--blue-light); }
+  .bd-green { background: var(--green-light); }
+  .bd-gold  { background: var(--gold-light); }
+  .bd-brown { background: var(--brown-light); }
+
+  .sec.dark .bl-item { color: rgba(255,255,255,.82); font-size: 7.6pt; }
+  .sec.dark .bl-dot  { background: rgba(255,255,255,.15); }
+
+  /* Side image */
+  .side-img { border-radius: 2mm; overflow: hidden; flex: 1; min-height: 22mm; }
+  .side-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  /* Budget */
+  .budget-wrap { flex-shrink: 0; padding-bottom: 3mm; }
+  .budget-head { display: flex; align-items: center; gap: 3mm; margin-bottom: 2mm; }
+  .budget-table {
+    width: 100%; border-collapse: collapse; font-size: 7.6pt;
+  }
+  .budget-table thead tr {
+    background: var(--blue-mid);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .budget-table thead th {
+    color: var(--white); font-weight: 700; font-size: 7.5pt;
+    text-align: left; padding: 2mm 3mm; letter-spacing: .02em;
+  }
+  .budget-table thead th:last-child { text-align: right; }
+  .budget-table tbody tr:nth-child(even) {
+    background: var(--blue-pale);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .budget-table tbody td {
+    padding: 1.7mm 3mm; color: var(--dark);
+    border-bottom: 0.2mm solid var(--border); vertical-align: middle;
+  }
+  .budget-table tbody td:last-child { text-align: right; font-weight: 600; color: var(--blue-mid); }
+  .budget-table tfoot tr {
+    background: var(--blue-mid);
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .budget-table tfoot td {
+    padding: 2mm 3mm; color: var(--white); font-weight: 800; font-size: 8.5pt;
+  }
+  .budget-table tfoot td:last-child { text-align: right; font-size: 9.5pt; }
+
+  /* Footer */
+  .p2-footer {
+    position: absolute; bottom: 3.5mm; left: 0; right: 0; height: 18mm;
+    background: var(--dark);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 12mm;
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+  }
+  .footer-info { display: flex; flex-direction: column; gap: .8mm; }
+  .footer-info strong { font-size: 8.5pt; font-weight: 800; color: var(--white); }
+  .footer-info span   { font-size: 7.5pt; color: rgba(255,255,255,.5); }
+  .footer-links { display: flex; gap: 5mm; margin-top: .5mm; }
+  .footer-links a { font-size: 7.5pt; color: #90CAF9; text-decoration: none; font-weight: 600; }
+  .footer-logo img {
+    height: 10mm; width: auto;
+    filter: brightness(0) invert(1); opacity: .7;
+  }
+
+  </style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button class="export-btn" onclick="window.print()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Exportar PDF
+  </button>
+</div>
+
+<!-- ══════════════════════════════
+     PAGE 1 — PORTADA
+══════════════════════════════ -->
+<article class="page">
+
+  <div class="cover-hero">
+    <img src="images/foto-4.jpeg" alt="Proyecto técnico ambiental" />
+    <div class="cover-hero__overlay"></div>
+    <div class="cover-hero__inner">
+
+      <div class="cover-top">
+        <img class="cover-logo" src="logo-sembrando-vida-vector.png" alt="Sembrando Vida por Colombia" />
+        <div class="cover-institution">
+          <div class="inst-badge gold-b">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            CAR · Cundinamarca
+          </div>
+          <div class="inst-badge">Pacho · 2026</div>
+        </div>
+      </div>
+
+      <div class="cover-center">
+        <div class="cover-pre">Proyecto Técnico Ambiental</div>
+        <h1 class="cover-title">
+          Restauración<br />
+          Ecológica ante la<br />
+          <em>CAR</em>
+        </h1>
+        <p class="cover-desc">
+          Recuperación de rondas hídricas y corredores viales rurales mediante reforestación
+          con especies nativas, economía circular y participación comunitaria en Pacho, Cundinamarca.
+        </p>
+        <div class="cover-tags">
+          <div class="cover-chip">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Pacho, Cundinamarca
+          </div>
+          <div class="cover-chip">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            24 meses de seguimiento
+          </div>
+          <div class="cover-chip">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            +150 beneficiarios directos
+          </div>
+        </div>
+      </div>
+
+      <div class="cover-director">
+        <strong>Alexander Useche Cáceres</strong>
+        Director Fundador · Fundación Sembrando Vida por Colombia
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Indicadores clave -->
+  <div class="cover-stats">
+    <div class="stat-col">
+      <div class="stat-icon-wrap si-green">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B5E1B" stroke-width="2" stroke-linecap="round"><path d="M12 22V12"/><path d="M12 12C12 8 16 4 20 4c0 4-2 8-8 8z"/><path d="M12 12C12 8 8 4 4 4c0 4 2 8 8 8z"/></svg>
+      </div>
+      <div class="stat-num g">2.000</div>
+      <div class="stat-label">Árboles nativos producidos y sembrados</div>
+    </div>
+    <div class="stat-col">
+      <div class="stat-icon-wrap si-blue">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B4F9E" stroke-width="2" stroke-linecap="round"><path d="M12 2C6 10 4 14 4 16a8 8 0 0016 0c0-2-2-6-8-14z"/></svg>
+      </div>
+      <div class="stat-num">85%</div>
+      <div class="stat-label">Supervivencia mínima del material vegetal</div>
+    </div>
+    <div class="stat-col">
+      <div class="stat-icon-wrap si-gold">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8930A" stroke-width="2" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div class="stat-num go">+150</div>
+      <div class="stat-label">Beneficiarios directos de la comunidad</div>
+    </div>
+    <div class="stat-col">
+      <div class="stat-icon-wrap si-brown">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A3B1E" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div class="stat-num br">24</div>
+      <div class="stat-label">Meses de seguimiento técnico continuo</div>
+    </div>
+  </div>
+
+  <div class="color-bar">
+    <span class="cb-blue"></span>
+    <span class="cb-green"></span>
+    <span class="cb-gold"></span>
+    <span class="cb-brown"></span>
+  </div>
+
+</article>
+
+
+<!-- ══════════════════════════════
+     PAGE 2 — CONTENIDO
+══════════════════════════════ -->
+<article class="page">
+
+  <header class="p2-header">
+    <img src="logo-sembrando-vida-vector.png" alt="Logo" />
+    <div class="p2-header-right">
+      <strong>Proyecto Técnico Ambiental · CAR</strong>
+      <small>Fundación Sembrando Vida por Colombia · Pacho, Cundinamarca</small>
+    </div>
+  </header>
+
+  <div class="p2-body">
+
+    <div class="two-col">
+
+      <!-- COLUMNA IZQUIERDA -->
+      <div class="col-l">
+
+        <!-- 1. Justificación -->
+        <div class="sec blue">
+          <div class="sec-head">
+            <div class="sec-icon si-bg-blue">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            </div>
+            <div>
+              <div class="sec-num sn-blue">01</div>
+              <h2>Justificación Técnica</h2>
+            </div>
+          </div>
+          <p>El municipio de Pacho presenta procesos de degradación ambiental: deforestación de rondas hídricas, erosión en corredores viales rurales y manejo inadecuado de residuos sólidos. El proyecto mitiga estos impactos mediante restauración ecológica con especies nativas y economía circular.</p>
+        </div>
+
+        <!-- 2. Objetivos -->
+        <div class="sec green">
+          <div class="sec-head">
+            <div class="sec-icon si-bg-green">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="white"/></svg>
+            </div>
+            <div>
+              <div class="sec-num sn-green">02</div>
+              <h2>Objetivos del Proyecto</h2>
+            </div>
+          </div>
+          <div class="bullet-list">
+            <div class="bl-item">
+              <div class="bl-dot bd-blue">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#1B4F9E" stroke-width="3"><path d="M12 2C6 10 4 14 4 16a8 8 0 0016 0c0-2-2-6-8-14z"/></svg>
+              </div>
+              Restaurar 5 km de servidumbre hídrica con especies nativas
+            </div>
+            <div class="bl-item">
+              <div class="bl-dot bd-gold">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#C8930A" stroke-width="3"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+              </div>
+              Revegetalizar 3 km de corredores viales con control de erosión
+            </div>
+            <div class="bl-item">
+              <div class="bl-dot bd-brown">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#7A3B1E" stroke-width="3"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+              </div>
+              Implementar sistema comunitario de compostaje (20 t/año)
+            </div>
+            <div class="bl-item">
+              <div class="bl-dot bd-green">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#1B5E1B" stroke-width="3"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+              </div>
+              Fortalecer educación ambiental y participación comunitaria
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Alcance Técnico -->
+        <div class="sec white">
+          <div class="sec-head">
+            <div class="sec-icon si-bg-gold">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            </div>
+            <div>
+              <div class="sec-num sn-gold">03</div>
+              <h2>Alcance Técnico</h2>
+            </div>
+          </div>
+          <div class="bullet-list">
+            <div class="bl-item"><div class="bl-dot bd-green"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#1B5E1B" stroke-width="3"><path d="M12 22V12"/><path d="M12 12C12 8 16 4 20 4c0 4-2 8-8 8z"/><path d="M12 12C12 8 8 4 4 4c0 4 2 8 8 8z"/></svg></div>Producción y siembra de 2.000 árboles nativos</div>
+            <div class="bl-item"><div class="bl-dot bd-brown"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#7A3B1E" stroke-width="3"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg></div>Instalación de módulo de compostaje (20 t/año)</div>
+            <div class="bl-item"><div class="bl-dot bd-gold"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#C8930A" stroke-width="3"><path d="M3 17l3-10h12l3 10"/><path d="M9 17l1.5-5M15 17l-1.5-5"/></svg></div>Barreras vivas y control de taludes en corredores</div>
+            <div class="bl-item"><div class="bl-dot bd-blue"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#1B4F9E" stroke-width="3"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>Seguimiento técnico continuo durante 24 meses</div>
+          </div>
+        </div>
+
+      </div><!-- /col-l -->
+
+      <!-- COLUMNA DERECHA -->
+      <div class="col-r">
+
+        <!-- 4. Metodología -->
+        <div class="sec dark">
+          <div class="sec-head">
+            <div class="sec-icon si-bg-white">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            </div>
+            <div>
+              <div class="sec-num sn-white">04</div>
+              <h2>Metodología</h2>
+            </div>
+          </div>
+          <div class="bullet-list">
+            <div class="bl-item"><div class="bl-dot"></div>Diagnóstico ambiental georreferenciado</div>
+            <div class="bl-item"><div class="bl-dot"></div>Delimitación conforme normativa ambiental vigente</div>
+            <div class="bl-item"><div class="bl-dot"></div>Preparación de suelos y trazado de siembra</div>
+            <div class="bl-item"><div class="bl-dot"></div>Mantenimiento y reposición de material vegetal</div>
+            <div class="bl-item"><div class="bl-dot"></div>Monitoreo de supervivencia y reportes semestrales</div>
+          </div>
+        </div>
+
+        <!-- 5. Indicadores -->
+        <div class="sec blue">
+          <div class="sec-head">
+            <div class="sec-icon si-bg-blue">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            </div>
+            <div>
+              <div class="sec-num sn-blue">05</div>
+              <h2>Indicadores de Resultado</h2>
+            </div>
+          </div>
+          <div class="bullet-list">
+            <div class="bl-item"><div class="bl-dot bd-green"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#1B5E1B" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Supervivencia mínima del <strong>85%</strong> del material vegetal</div>
+            <div class="bl-item"><div class="bl-dot bd-gold"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#C8930A" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Reducción visible de erosión en zonas intervenidas</div>
+            <div class="bl-item"><div class="bl-dot bd-brown"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#7A3B1E" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Aprovechamiento de <strong>20 t/año</strong> de residuos orgánicos</div>
+            <div class="bl-item"><div class="bl-dot bd-blue"><svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="#1B4F9E" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></div>Participación comunitaria superior a <strong>150 beneficiarios</strong></div>
+          </div>
+        </div>
+
+        <!-- Foto -->
+        <div class="side-img">
+          <img src="images/foto-2.jpeg" alt="Trabajo de restauración ecológica" />
+        </div>
+
+      </div><!-- /col-r -->
+
+    </div><!-- /two-col -->
+
+    <!-- 6. Presupuesto -->
+    <div class="budget-wrap">
+      <div class="budget-head">
+        <div class="sec-icon si-bg-brown" style="width:7mm;height:7mm;border-radius:1.5mm;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:var(--brown);">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        </div>
+        <div>
+          <div class="sec-num sn-brown">06</div>
+          <h2 style="font-size:9pt;font-weight:800;color:var(--dark);">Presupuesto Resumido (COP)</h2>
+        </div>
+      </div>
+      <table class="budget-table">
+        <thead>
+          <tr><th>Concepto</th><th style="text-align:right">Valor (COP)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Reforestación y material vegetal</td><td>$ 40.000.000</td></tr>
+          <tr><td>Mano de obra técnica</td><td>$ 65.000.000</td></tr>
+          <tr><td>Módulo de compostaje</td><td>$ 18.000.000</td></tr>
+          <tr><td>Logística y transporte</td><td>$ 20.000.000</td></tr>
+          <tr><td>Educación ambiental</td><td>$ 10.000.000</td></tr>
+          <tr><td>Monitoreo y seguimiento (24 meses)</td><td>$ 15.000.000</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td>TOTAL PROYECTO</td><td>$ 168.000.000</td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+  </div><!-- /p2-body -->
+
+  <footer class="p2-footer">
+    <div class="footer-info">
+      <strong>Alexander Useche Cáceres — Director Fundador</strong>
+      <span>Fundación Sembrando Vida por Colombia · Pacho, Cundinamarca</span>
+      <div class="footer-links">
+        <a href="https://wa.me/573227402313">+57 322 740 2313</a>
+        <a href="https://sembrandovidaporcolombia.org">sembrandovidaporcolombia.org</a>
+      </div>
+    </div>
+    <div class="footer-logo">
+      <img src="logo-sembrando-vida-vector.png" alt="Logo" />
+    </div>
+  </footer>
+
+  <div class="color-bar" style="position:absolute;bottom:0;left:0;right:0;">
+    <span class="cb-blue"></span>
+    <span class="cb-green"></span>
+    <span class="cb-gold"></span>
+    <span class="cb-brown"></span>
+  </div>
+
+</article>
+
+</body>
+</html>
