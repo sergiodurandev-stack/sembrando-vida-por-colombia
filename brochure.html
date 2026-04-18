@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brochure – Proyecto Ambiental Integral · Sembrando Vida por Colombia</title>
+  <link rel="stylesheet" href="fonts/fonts.css" />
+  <style>
+
+  /* ═══════════════════════════════════════════════
+     BASE
+  ═══════════════════════════════════════════════ */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --green:        #1B5E1B;
+    --green-mid:    #2E7D32;
+    --green-light:  #E8F5E9;
+    --green-pale:   #F1F8F1;
+    --brown:        #7A3B1E;
+    --brown-light:  #FBF0EB;
+    --gold:         #C8930A;
+    --gold-light:   #FFF8E1;
+    --blue:         #1B4F9E;
+    --blue-light:   #E8EEF8;
+    --dark:         #1A1A1A;
+    --gray:         #4A4A4A;
+    --gray-light:   #F5F5F5;
+    --white:        #FFFFFF;
+    --border:       #E0E0E0;
+  }
+
+  html, body {
+    font-family: 'Inter', Arial, sans-serif;
+    background: #CBD5D0;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ═══════════════════════════════════════════════
+     TOOLBAR (hidden on print)
+  ═══════════════════════════════════════════════ */
+  .toolbar {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .export-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 22px;
+    background: var(--green);
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(27,94,27,.35);
+    transition: background .2s;
+  }
+  .export-btn:hover { background: #154f15; }
+  .export-btn svg { flex-shrink: 0; }
+
+  @media print {
+    .toolbar { display: none !important; }
+    html, body { background: white; }
+    @page { size: A4 portrait; margin: 0; }
+    .page { margin: 0 !important; box-shadow: none !important; page-break-after: always; }
+    .page:last-child { page-break-after: avoid; }
+  }
+
+  /* ═══════════════════════════════════════════════
+     PAGE SHELL  —  210mm × 297mm
+  ═══════════════════════════════════════════════ */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    background: var(--white);
+    margin: 28px auto;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0,0,0,.18);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /* ═══════════════════════════════════════════════
+     PAGE 1 — COVER
+  ═══════════════════════════════════════════════ */
+
+  /* Hero photo area */
+  .cover-hero {
+    position: relative;
+    width: 100%;
+    height: 185mm;
+    overflow: hidden;
+  }
+  .cover-hero__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 30%;
+    display: block;
+  }
+  .cover-hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      160deg,
+      rgba(11,38,11,.88) 0%,
+      rgba(27,94,27,.75) 50%,
+      rgba(11,38,11,.70) 100%
+    );
+  }
+
+  /* Content over hero */
+  .cover-hero__inner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 9mm 12mm 9mm;
+  }
+
+  /* Top row: logo + year */
+  .cover-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .cover-logo {
+    height: 14mm;
+    width: auto;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: .92;
+  }
+  .cover-year-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 7.5pt;
+    font-weight: 700;
+    color: rgba(255,255,255,.75);
+    border: 1px solid rgba(255,255,255,.3);
+    padding: 2mm 4mm;
+    border-radius: 50px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  /* Main title block */
+  .cover-center {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6mm 0;
+  }
+  .cover-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 7pt;
+    font-weight: 700;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 4mm;
+  }
+  .cover-tag::before {
+    content: '';
+    display: block;
+    width: 18px; height: 2px;
+    background: var(--gold);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .cover-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 30pt;
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1.08;
+    margin-bottom: 5mm;
+  }
+  .cover-title em {
+    font-style: normal;
+    color: var(--gold);
+  }
+  .cover-desc {
+    font-size: 9pt;
+    color: rgba(255,255,255,.72);
+    max-width: 130mm;
+    line-height: 1.65;
+    margin-bottom: 6mm;
+  }
+  .cover-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 8.5pt;
+    font-weight: 600;
+    color: rgba(255,255,255,.85);
+    background: rgba(255,255,255,.1);
+    border: 1px solid rgba(255,255,255,.2);
+    padding: 2mm 5mm;
+    border-radius: 50px;
+    width: fit-content;
+  }
+
+  /* Director credit */
+  .cover-director {
+    font-size: 7.5pt;
+    color: rgba(255,255,255,.6);
+    line-height: 1.5;
+  }
+  .cover-director strong {
+    color: rgba(255,255,255,.9);
+    font-weight: 700;
+    font-size: 8pt;
+    display: block;
+    margin-bottom: 1mm;
+  }
+
+  /* Stats strip */
+  .cover-stats {
+    display: flex;
+    height: 52mm;
+    background: var(--white);
+  }
+  .stat-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5mm 3mm;
+    border-right: 1px solid var(--border);
+    text-align: center;
+  }
+  .stat-col:last-child { border-right: none; }
+  .stat-icon-wrap {
+    width: 11mm; height: 11mm;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 2.5mm;
+    flex-shrink: 0;
+  }
+  .stat-icon-wrap.green  { background: var(--green-light); }
+  .stat-icon-wrap.blue   { background: var(--blue-light); }
+  .stat-icon-wrap.gold   { background: var(--gold-light); }
+  .stat-icon-wrap.brown  { background: var(--brown-light); }
+  .stat-num {
+    font-size: 17pt;
+    font-weight: 900;
+    color: var(--green);
+    line-height: 1;
+    margin-bottom: 1.5mm;
+  }
+  .stat-label {
+    font-size: 7pt;
+    color: var(--gray);
+    font-weight: 500;
+    line-height: 1.4;
+    max-width: 28mm;
+  }
+
+  /* Brand color bar */
+  .color-bar {
+    display: flex;
+    height: 3.5mm;
+    width: 100%;
+  }
+  .color-bar span {
+    flex: 1;
+    display: block;
+  }
+  .cb-green  { background: var(--green); flex: 2 !important; }
+  .cb-gold   { background: var(--gold); }
+  .cb-brown  { background: var(--brown); }
+  .cb-blue   { background: var(--blue); }
+
+  /* ═══════════════════════════════════════════════
+     PAGE 2 — CONTENT
+  ═══════════════════════════════════════════════ */
+
+  /* Header strip */
+  .p2-header {
+    background: var(--green);
+    height: 16mm;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12mm;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .p2-header-logo {
+    height: 10mm;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: .9;
+  }
+  .p2-header-right {
+    text-align: right;
+  }
+  .p2-header-right strong {
+    display: block;
+    font-size: 8.5pt;
+    font-weight: 700;
+    color: var(--white);
+    letter-spacing: .03em;
+  }
+  .p2-header-right small {
+    font-size: 7pt;
+    color: rgba(255,255,255,.65);
+  }
+
+  /* Body */
+  .p2-body {
+    padding: 7mm 12mm 5mm;
+    height: calc(297mm - 16mm - 18mm - 3.5mm);
+    display: flex;
+    flex-direction: column;
+    gap: 5mm;
+  }
+
+  /* Two-column row */
+  .two-col {
+    display: flex;
+    gap: 6mm;
+    flex: 1;
+    min-height: 0;
+  }
+  .col-l { flex: 1.05; display: flex; flex-direction: column; gap: 4.5mm; }
+  .col-r { flex: 0.95; display: flex; flex-direction: column; gap: 4.5mm; }
+
+  /* Section blocks */
+  .sec {
+    background: var(--white);
+    border-radius: 2mm;
+    border: 0.3mm solid var(--border);
+    padding: 4mm 4.5mm;
+    flex-shrink: 0;
+  }
+  .sec.sec-green { background: var(--green-pale); border-color: #C8E6C9; }
+  .sec.sec-dark  { background: var(--green); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .sec.sec-blue  { background: var(--blue-light); border-color: #BBCFEE; }
+
+  .sec-header {
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+    margin-bottom: 2.5mm;
+  }
+  .sec-icon {
+    width: 7mm; height: 7mm;
+    border-radius: 1.5mm;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .sec-icon.green  { background: var(--green);  }
+  .sec-icon.gold   { background: var(--gold);   }
+  .sec-icon.brown  { background: var(--brown);  }
+  .sec-icon.blue   { background: var(--blue);   }
+  .sec-icon.white  { background: rgba(255,255,255,.15); }
+
+  .sec-number {
+    font-size: 6.5pt;
+    font-weight: 800;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: .8mm;
+  }
+  .sec-number.green  { color: var(--green); }
+  .sec-number.gold   { color: var(--gold); }
+  .sec-number.brown  { color: var(--brown); }
+  .sec-number.blue   { color: var(--blue); }
+  .sec-number.white  { color: rgba(255,255,255,.7); }
+
+  .sec h2 {
+    font-size: 9.5pt;
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  .sec.sec-dark h2 { color: var(--white); }
+
+  .sec p {
+    font-size: 8pt;
+    color: var(--gray);
+    line-height: 1.65;
+  }
+  .sec.sec-dark p { color: rgba(255,255,255,.78); font-size: 7.8pt; }
+
+  /* Metas list */
+  .meta-list { display: flex; flex-direction: column; gap: 2.5mm; margin-top: .5mm; }
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+    background: var(--white);
+    border: 0.25mm solid var(--border);
+    border-radius: 1.5mm;
+    padding: 2.5mm 3mm;
+  }
+  .meta-icon {
+    width: 7mm; height: 7mm;
+    border-radius: 1.5mm;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .meta-icon.tree    { background: var(--green-light); }
+  .meta-icon.water   { background: var(--blue-light); }
+  .meta-icon.road    { background: var(--gold-light); }
+  .meta-icon.recycle { background: var(--brown-light); }
+  .meta-strong { font-size: 8pt; font-weight: 700; color: var(--dark); display: block; line-height: 1.3; }
+  .meta-small  { font-size: 7pt; color: var(--gray); }
+
+  /* Benefit list */
+  .benefit-list {
+    margin-top: 2.5mm;
+    display: flex;
+    flex-direction: column;
+    gap: 2mm;
+  }
+  .benefit-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 2.5mm;
+    font-size: 7.8pt;
+    color: rgba(255,255,255,.85);
+    line-height: 1.5;
+    list-style: none;
+  }
+  .benefit-list li::before {
+    content: '';
+    flex-shrink: 0;
+    width: 4mm; height: 4mm;
+    background: var(--gold);
+    border-radius: .8mm;
+    margin-top: .4mm;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* Side image */
+  .side-img {
+    border-radius: 2mm;
+    overflow: hidden;
+    flex: 1;
+    min-height: 24mm;
+  }
+  .side-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Budget */
+  .budget-wrap { flex-shrink: 0; }
+  .budget-sec-head {
+    display: flex;
+    align-items: center;
+    gap: 3mm;
+    margin-bottom: 2mm;
+  }
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 7.8pt;
+  }
+  .budget-table thead tr {
+    background: var(--green);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .budget-table thead th {
+    color: var(--white);
+    font-weight: 700;
+    font-size: 7.5pt;
+    text-align: left;
+    padding: 2mm 3mm;
+    letter-spacing: .03em;
+  }
+  .budget-table thead th:last-child { text-align: right; }
+  .budget-table tbody tr:nth-child(even) {
+    background: var(--green-pale);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .budget-table tbody td {
+    padding: 1.8mm 3mm;
+    color: var(--dark);
+    border-bottom: 0.2mm solid var(--border);
+    vertical-align: middle;
+  }
+  .budget-table tbody td:last-child { text-align: right; font-weight: 600; color: var(--green); }
+  .budget-table tfoot tr {
+    background: var(--green);
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  .budget-table tfoot td {
+    padding: 2.2mm 3mm;
+    color: var(--white);
+    font-weight: 800;
+    font-size: 8.5pt;
+  }
+  .budget-table tfoot td:last-child { text-align: right; font-size: 9.5pt; }
+
+  /* Footer */
+  .p2-footer {
+    height: 18mm;
+    background: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12mm;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    position: absolute;
+    bottom: 3.5mm;
+    left: 0; right: 0;
+  }
+  .footer-contact-info { display: flex; flex-direction: column; gap: 1mm; }
+  .footer-contact-info strong {
+    font-size: 8.5pt; font-weight: 800;
+    color: var(--white); display: block;
+  }
+  .footer-contact-info span {
+    font-size: 7.5pt;
+    color: rgba(255,255,255,.55);
+  }
+  .footer-contact-items { display: flex; gap: 5mm; margin-top: .5mm; }
+  .footer-contact-items a {
+    font-size: 7.5pt;
+    color: var(--gold);
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .footer-logo-wrap img {
+    height: 10mm;
+    width: auto;
+    filter: brightness(0) invert(1);
+    opacity: .75;
+  }
+
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════
+     TOOLBAR
+══════════════════════════════════ -->
+<div class="toolbar no-print">
+  <button class="export-btn" onclick="window.print()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    Exportar PDF
+  </button>
+</div>
+
+<!-- ══════════════════════════════════
+     PAGE 1 — PORTADA
+══════════════════════════════════ -->
+<article class="page">
+
+  <!-- Hero con foto -->
+  <div class="cover-hero">
+    <img class="cover-hero__img" src="images/foto-1.jpeg" alt="Reforestación en Colombia" />
+    <div class="cover-hero__overlay"></div>
+    <div class="cover-hero__inner">
+
+      <!-- Top: logo + año -->
+      <div class="cover-top">
+        <img class="cover-logo" src="logo-sembrando-vida-vector.png" alt="Sembrando Vida por Colombia" />
+        <div class="cover-year-badge">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Pacho · 2026
+        </div>
+      </div>
+
+      <!-- Centro: título -->
+      <div class="cover-center">
+        <div class="cover-tag">Proyecto Ambiental Integral</div>
+        <h1 class="cover-title">
+          Restaurando<br />
+          el Territorio<br />
+          <em>Colombiano</em>
+        </h1>
+        <p class="cover-desc">
+          Reforestación de servidumbres hídricas, recuperación de corredores viales
+          rurales y producción de compostaje comunitario en el municipio de Pacho, Cundinamarca.
+        </p>
+        <div class="cover-location">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Pacho, Cundinamarca
+        </div>
+      </div>
+
+      <!-- Director -->
+      <div class="cover-director">
+        <strong>Alexander Useche Cáceres</strong>
+        Director Fundador · Fundación Sembrando Vida por Colombia
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Stats strip -->
+  <div class="cover-stats">
+    <div class="stat-col">
+      <div class="stat-icon-wrap green">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B5E1B" stroke-width="2" stroke-linecap="round"><path d="M12 22V12"/><path d="M12 12C12 8 16 4 20 4c0 4-2 8-8 8z"/><path d="M12 12C12 8 8 4 4 4c0 4 2 8 8 8z"/></svg>
+      </div>
+      <div class="stat-num">2.000</div>
+      <div class="stat-label">Árboles nativos sembrados</div>
+    </div>
+    <div class="stat-col">
+      <div class="stat-icon-wrap blue">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1B4F9E" stroke-width="2" stroke-linecap="round"><path d="M12 2C6 10 4 14 4 16a8 8 0 0016 0c0-2-2-6-8-14z"/></svg>
+      </div>
+      <div class="stat-num">5 km</div>
+      <div class="stat-label">Servidumbre hídrica recuperada</div>
+    </div>
+    <div class="stat-col">
+      <div class="stat-icon-wrap gold">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C8930A" stroke-width="2" stroke-linecap="round"><path d="M3 12h18M3 6h18M3 18h18"/><circle cx="7" cy="12" r="1.5" fill="#C8930A"/><circle cx="17" cy="12" r="1.5" fill="#C8930A"/></svg>
+      </div>
+      <div class="stat-num">3 km</div>
+      <div class="stat-label">Corredores viales restaurados</div>
+    </div>
+    <div class="stat-col">
+      <div class="stat-icon-wrap brown">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7A3B1E" stroke-width="2" stroke-linecap="round"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/><path d="M3.3 7l8.7 5 8.7-5"/><path d="M12 22V12"/></svg>
+      </div>
+      <div class="stat-num">20 t</div>
+      <div class="stat-label">Residuos en compostaje</div>
+    </div>
+  </div>
+
+  <!-- Barra de colores -->
+  <div class="color-bar">
+    <span class="cb-green"></span>
+    <span class="cb-gold"></span>
+    <span class="cb-brown"></span>
+    <span class="cb-blue"></span>
+  </div>
+
+</article>
+
+
+<!-- ══════════════════════════════════
+     PAGE 2 — CONTENIDO
+══════════════════════════════════ -->
+<article class="page">
+
+  <!-- Header -->
+  <header class="p2-header">
+    <img class="p2-header-logo" src="logo-sembrando-vida-vector.png" alt="Logo" />
+    <div class="p2-header-right">
+      <strong>Proyecto Ambiental Integral</strong>
+      <small>Fundación Sembrando Vida por Colombia · Pacho, Cundinamarca</small>
+    </div>
+  </header>
+
+  <!-- Cuerpo -->
+  <div class="p2-body">
+
+    <!-- Dos columnas -->
+    <div class="two-col">
+
+      <!-- Columna izquierda -->
+      <div class="col-l">
+
+        <!-- 1. Objetivo General -->
+        <div class="sec sec-green">
+          <div class="sec-header">
+            <div class="sec-icon green">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="white"/></svg>
+            </div>
+            <div>
+              <div class="sec-number green">01</div>
+              <h2>Objetivo General</h2>
+            </div>
+          </div>
+          <p>Restaurar ecosistemas estratégicos mediante reforestación de servidumbres hídricas, recuperación ambiental de corredores viales y manejo integral de residuos con producción de compostaje comunitario en Pacho, Cundinamarca.</p>
+        </div>
+
+        <!-- 2. Metas Anuales -->
+        <div class="sec">
+          <div class="sec-header">
+            <div class="sec-icon gold">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+            </div>
+            <div>
+              <div class="sec-number gold">02</div>
+              <h2>Metas Anuales</h2>
+            </div>
+          </div>
+          <div class="meta-list">
+            <div class="meta-item">
+              <div class="meta-icon tree">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1B5E1B" stroke-width="2" stroke-linecap="round"><path d="M12 22V12"/><path d="M12 12C12 8 16 4 20 4c0 4-2 8-8 8z"/><path d="M12 12C12 8 8 4 4 4c0 4 2 8 8 8z"/></svg>
+              </div>
+              <div>
+                <span class="meta-strong">2.000 árboles nativos</span>
+                <span class="meta-small">Siembra y producción forestal</span>
+              </div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-icon water">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1B4F9E" stroke-width="2" stroke-linecap="round"><path d="M12 2C6 10 4 14 4 16a8 8 0 0016 0c0-2-2-6-8-14z"/></svg>
+              </div>
+              <div>
+                <span class="meta-strong">5 km de servidumbre hídrica</span>
+                <span class="meta-small">Recuperación ambiental de cuencas</span>
+              </div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-icon road">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C8930A" stroke-width="2" stroke-linecap="round"><path d="M3 17l3-10h12l3 10"/><path d="M9 17l1.5-5M15 17l-1.5-5"/><line x1="7" y1="12" x2="17" y2="12"/></svg>
+              </div>
+              <div>
+                <span class="meta-strong">3 km de corredores viales rurales</span>
+                <span class="meta-small">Restauración ecológica vial</span>
+              </div>
+            </div>
+            <div class="meta-item">
+              <div class="meta-icon recycle">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#7A3B1E" stroke-width="2" stroke-linecap="round"><path d="M7 19H4.815a1.83 1.83 0 01-1.57-2.777l1.07-1.87"/><path d="M11 19l2-3.5"/><path d="M17 19h2.185a1.83 1.83 0 001.57-2.777l-1.07-1.87"/><path d="M13 19l-2-3.5"/><path d="M12 3L9.5 7.5H7"/><path d="M12 3l2.5 4.5H17"/><line x1="12" y1="3" x2="12" y2="8"/></svg>
+              </div>
+              <div>
+                <span class="meta-strong">20 toneladas → compostaje</span>
+                <span class="meta-small">Transformación residuos orgánicos</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /col-l -->
+
+      <!-- Columna derecha -->
+      <div class="col-r">
+
+        <!-- 4. Propuesta -->
+        <div class="sec sec-dark">
+          <div class="sec-header">
+            <div class="sec-icon white">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+            </div>
+            <div>
+              <div class="sec-number white">04</div>
+              <h2>Propuesta a la Alcaldía de Pacho</h2>
+            </div>
+          </div>
+          <p>Firma de un convenio interinstitucional alineado con el Plan de Desarrollo Municipal y las metas de sostenibilidad ambiental del territorio.</p>
+          <ul class="benefit-list" style="margin-top:3mm">
+            <li>Cumplimiento de metas ambientales municipales</li>
+            <li>Generación de empleo verde rural</li>
+            <li>Fortalecimiento comunitario y educación ambiental</li>
+            <li>Indicadores medibles e informes técnicos periódicos</li>
+          </ul>
+        </div>
+
+        <!-- Foto lateral -->
+        <div class="side-img">
+          <img src="images/foto-3.jpeg" alt="Reforestación" />
+        </div>
+
+      </div><!-- /col-r -->
+
+    </div><!-- /two-col -->
+
+    <!-- 3. Presupuesto -->
+    <div class="budget-wrap">
+      <div class="budget-sec-head">
+        <div class="sec-icon brown" style="width:7mm;height:7mm;border-radius:1.5mm;display:flex;align-items:center;justify-content:center;background:var(--brown);flex-shrink:0;">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+        </div>
+        <div>
+          <div class="sec-number brown">03</div>
+          <h2 style="font-size:9.5pt;font-weight:800;color:var(--dark);">Presupuesto Estimado Anual (COP)</h2>
+        </div>
+      </div>
+      <table class="budget-table">
+        <thead>
+          <tr>
+            <th>Concepto</th>
+            <th style="text-align:right;white-space:nowrap">Valor Estimado (COP)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>2.000 Árboles nativos (producción + siembra)</td><td>$ 40.000.000</td></tr>
+          <tr><td>Herramientas e insumos forestales</td><td>$ 12.000.000</td></tr>
+          <tr><td>Mano de obra técnica y operativa</td><td>$ 65.000.000</td></tr>
+          <tr><td>Módulo de compostaje comunitario</td><td>$ 18.000.000</td></tr>
+          <tr><td>Capacitaciones y educación ambiental</td><td>$ 10.000.000</td></tr>
+          <tr><td>Transporte y logística</td><td>$ 20.000.000</td></tr>
+          <tr><td>Seguimiento técnico y monitoreo</td><td>$ 15.000.000</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td>TOTAL ESTIMADO ANUAL</td><td>$ 180.000.000</td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+  </div><!-- /p2-body -->
+
+  <!-- Footer -->
+  <footer class="p2-footer">
+    <div class="footer-contact-info">
+      <strong>Alexander Useche Cáceres — Director Fundador</strong>
+      <span>Fundación Sembrando Vida por Colombia · Pacho, Cundinamarca</span>
+      <div class="footer-contact-items">
+        <a href="https://wa.me/573227402313">+57 322 740 2313</a>
+        <a href="https://sembrandovidaporcolombia.org">sembrandovidaporcolombia.org</a>
+      </div>
+    </div>
+    <div class="footer-logo-wrap">
+      <img src="logo-sembrando-vida-vector.png" alt="Logo" />
+    </div>
+  </footer>
+
+  <!-- Barra de colores -->
+  <div class="color-bar" style="position:absolute;bottom:0;left:0;right:0;">
+    <span class="cb-green"></span>
+    <span class="cb-gold"></span>
+    <span class="cb-brown"></span>
+    <span class="cb-blue"></span>
+  </div>
+
+</article>
+
+</body>
+</html>
